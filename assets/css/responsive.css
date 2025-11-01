@@ -1,0 +1,443 @@
+/* Mobile First Responsive Design */
+
+/* Tablet Styles (768px and below) */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-4);
+    }
+    
+    /* Typography adjustments */
+    :root {
+        --font-size-5xl: 2.5rem;
+        --font-size-4xl: 2rem;
+        --font-size-3xl: 1.5rem;
+        --font-size-2xl: 1.25rem;
+    }
+    
+    /* Navigation */
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-8) 0;
+        gap: var(--spacing-6);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: calc(80px + var(--spacing-12)) 0 var(--spacing-12);
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-12);
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-cta {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-3);
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-4);
+        margin-top: var(--spacing-12);
+    }
+    
+    /* Section adjustments */
+    section {
+        padding: var(--spacing-12) 0;
+    }
+    
+    .section-header {
+        margin-bottom: var(--spacing-12);
+    }
+    
+    .section-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .section-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Philosophy Section */
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+    }
+    
+    .philosophy-card {
+        padding: var(--spacing-6);
+    }
+    
+    /* Services Section */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+    }
+    
+    .service-card {
+        padding: var(--spacing-6);
+    }
+    
+    /* Portfolio Section */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+    }
+    
+    /* Contact Section */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-8);
+    }
+    
+    .contact-form {
+        padding: var(--spacing-6);
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-8);
+        text-align: center;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-3);
+    }
+    
+    .footer-legal {
+        justify-content: center;
+    }
+}
+
+/* Mobile Styles (480px and below) */
+@media (max-width: 480px) {
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-3);
+    }
+    
+    /* Typography */
+    :root {
+        --font-size-5xl: 2rem;
+        --font-size-4xl: 1.75rem;
+        --font-size-3xl: 1.375rem;
+    }
+    
+    /* Navigation */
+    .nav-container {
+        padding: var(--spacing-3) var(--spacing-4);
+    }
+    
+    .logo-text {
+        font-size: var(--font-size-base);
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: calc(70px + var(--spacing-8)) 0 var(--spacing-8);
+    }
+    
+    .hero-container {
+        padding: 0 var(--spacing-3);
+        gap: var(--spacing-8);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-6);
+    }
+    
+    .hero-stats {
+        margin-top: var(--spacing-8);
+        padding: 0 var(--spacing-3);
+    }
+    
+    .stat {
+        padding: var(--spacing-4);
+    }
+    
+    .stat-number {
+        font-size: var(--font-size-2xl);
+    }
+    
+    /* Cards */
+    .philosophy-card,
+    .service-card {
+        padding: var(--spacing-5);
+    }
+    
+    .card-title,
+    .service-title {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Portfolio */
+    .portfolio-content {
+        padding: var(--spacing-5);
+    }
+    
+    .portfolio-title {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Contact */
+    .contact-form {
+        padding: var(--spacing-5);
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: var(--spacing-3) var(--spacing-5);
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Form */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: var(--spacing-3);
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Footer */
+    .footer {
+        padding: var(--spacing-12) 0 var(--spacing-6);
+    }
+    
+    .footer-content {
+        gap: var(--spacing-6);
+    }
+    
+    .footer-links {
+        gap: var(--spacing-4);
+    }
+}
+
+/* Large Desktop Styles (1400px and above) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-container {
+        max-width: 1400px;
+    }
+    
+    .hero-stats {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+}
+
+/* Landscape Phone Orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: calc(70px + var(--spacing-6)) 0 var(--spacing-6);
+    }
+    
+    .hero-container {
+        gap: var(--spacing-8);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-4);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-4);
+    }
+    
+    .hero-stats {
+        margin-top: var(--spacing-6);
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stat {
+        padding: var(--spacing-3);
+    }
+    
+    .stat-number {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-1);
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Ensure crisp rendering on high DPI displays */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Print Styles */
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .navbar,
+    .hero-cta,
+    .contact-form,
+    .social-links {
+        display: none;
+    }
+    
+    .hero {
+        padding: var(--spacing-8) 0;
+    }
+    
+    .section-header {
+        margin-bottom: var(--spacing-8);
+    }
+    
+    section {
+        padding: var(--spacing-8) 0;
+        break-inside: avoid;
+    }
+    
+    .philosophy-card,
+    .service-card,
+    .portfolio-card {
+        break-inside: avoid;
+        margin-bottom: var(--spacing-6);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .scroll-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-light: #64748b;
+        --background: #0f172a;
+        --background-alt: #1e293b;
+        --border-color: #334155;
+    }
+    
+    .navbar {
+        background-color: rgba(15, 23, 42, 0.95);
+        border-bottom-color: var(--border-color);
+    }
+    
+    .hero {
+        background: linear-gradient(135deg, var(--background) 0%, var(--background-alt) 100%);
+    }
+    
+    .philosophy-card,
+    .service-card,
+    .contact-form {
+        background-color: var(--background-alt);
+        border-color: var(--border-color);
+    }
+    
+    .card-example {
+        background-color: rgba(51, 65, 85, 0.5);
+    }
+    
+    .service-icon {
+        background-color: rgba(37, 99, 235, 0.2);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background-color: var(--background);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary-color);
+        background-color: var(--background-alt);
+    }
+}
