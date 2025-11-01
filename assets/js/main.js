@@ -119,7 +119,7 @@ function initScrollReveal() {
     });
 
     // Add scroll-reveal class to cards and sections
-    const cards = document.querySelectorAll('.philosophy-card, .service-card, .portfolio-card');
+    const cards = document.querySelectorAll('.philosophy-card, .service-card, .team-card');
     const sections = document.querySelectorAll('.section-header, .hero-content, .contact-content');
     
     [...cards, ...sections].forEach((element, index) => {

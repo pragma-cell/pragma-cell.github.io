@@ -4,7 +4,10 @@
       "Bash(mkdir:*)",
       "WebFetch(domain:unsplash.com)",
       "mcp__My-fetch__fetch",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

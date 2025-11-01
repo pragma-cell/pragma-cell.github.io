@@ -124,8 +124,8 @@
         padding: var(--spacing-6);
     }
     
-    /* Portfolio Section */
-    .portfolio-grid {
+    /* Team Section */
+    .team-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-6);
     }
@@ -230,12 +230,12 @@
         font-size: var(--font-size-lg);
     }
     
-    /* Portfolio */
-    .portfolio-content {
+    /* Team */
+    .team-content {
         padding: var(--spacing-5);
     }
     
-    .portfolio-title {
+    .team-name {
         font-size: var(--font-size-lg);
     }
     
