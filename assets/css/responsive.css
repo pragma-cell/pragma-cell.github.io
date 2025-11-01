@@ -1,5 +1,15 @@
 /* Mobile First Responsive Design */
 
+/* Large Tablet Styles (1024px and below) */
+@media (max-width: 1024px) {
+    /* Team Section - 2 columns on tablet */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-8);
+        max-width: 700px;
+    }
+}
+
 /* Tablet Styles (768px and below) */
 @media (max-width: 768px) {
     /* Container */
@@ -127,7 +137,18 @@
     /* Team Section */
     .team-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-6);
+        gap: var(--spacing-8);
+        max-width: 400px;
+    }
+    
+    .team-card {
+        padding: var(--spacing-6);
+    }
+    
+    .team-image {
+        width: 100px;
+        height: 100px;
+        margin-bottom: var(--spacing-4);
     }
     
     /* Contact Section */
