@@ -463,78 +463,105 @@
     }
 }
 
-/* Language Switcher Styles */
+/* Language Switcher Styles - 3 visible buttons */
 .language-switcher {
-    position: relative;
-    display: inline-block;
-    margin-left: var(--spacing-4);
+    display: flex;
+    gap: var(--spacing-2);
+    align-items: center;
+    margin-left: var(--spacing-6);
+    background: rgba(15, 23, 42, 0.6);
+    padding: var(--spacing-1);
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    backdrop-filter: blur(10px);
 }
 
-.current-lang {
+.lang-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-1);
     background: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: var(--spacing-2) var(--spacing-4);
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: var(--font-size-sm);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 60px;
-}
-
-.current-lang:hover {
-    background: var(--primary-color);
-    color: white;
-}
-
-.lang-dropdown {
-    position: absolute;
-    top: calc(100% + var(--spacing-2));
-    right: 0;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-lg);
-    min-width: 140px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    overflow: hidden;
-}
-
-.lang-dropdown.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.lang-option {
-    display: block;
-    padding: var(--spacing-3) var(--spacing-4);
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all 0.2s ease;
-    font-size: var(--font-size-sm);
+    border: 2px solid transparent;
+    color: var(--text-tertiary);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-lg);
     font-weight: 500;
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-width: 45px;
+    position: relative;
 }
 
-.lang-option:hover {
+.lang-flag {
+    font-size: 1.2rem;
+    line-height: 1;
+    filter: grayscale(0.7);
+    transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.lang-code {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Hover state */
+.lang-btn:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.lang-btn:hover .lang-flag {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+/* Active state - langue sélectionnée */
+.lang-btn.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    border-color: var(--primary-color);
+    color: var(--primary-light);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), inset 0 0 10px rgba(59, 130, 246, 0.1);
+}
+
+.lang-btn.active .lang-flag {
+    filter: grayscale(0);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.lang-btn.active .lang-code {
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+/* Pulse animation for active flag */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Active indicator bar */
+.lang-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
     background: var(--primary-color);
-    color: white;
-}
-
-/* Dark theme adjustments for language switcher */
-@media (prefers-color-scheme: dark) {
-    .lang-dropdown {
-        background: var(--background-alt);
-        border: 1px solid var(--border-color);
-    }
-
-    .lang-option {
-        color: var(--text-primary);
-    }
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
 /* Mobile language switcher */
@@ -543,16 +570,20 @@
         order: -1;
         margin-left: 0;
         margin-right: var(--spacing-4);
+        gap: var(--spacing-1);
+        padding: var(--spacing-1);
     }
 
-    .current-lang {
-        padding: var(--spacing-2) var(--spacing-3);
-        min-width: 50px;
-        font-size: 0.75rem;
+    .lang-btn {
+        padding: var(--spacing-1) var(--spacing-2);
+        min-width: 35px;
     }
 
-    .lang-dropdown {
-        right: auto;
-        left: 0;
+    .lang-flag {
+        font-size: 1rem;
+    }
+
+    .lang-code {
+        font-size: 0.65rem;
     }
 }
