@@ -462,3 +462,97 @@
         background-color: var(--background-alt);
     }
 }
+
+/* Language Switcher Styles */
+.language-switcher {
+    position: relative;
+    display: inline-block;
+    margin-left: var(--spacing-4);
+}
+
+.current-lang {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+.current-lang:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + var(--spacing-2));
+    right: 0;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    min-width: 140px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.lang-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    display: block;
+    padding: var(--spacing-3) var(--spacing-4);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.lang-option:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Dark theme adjustments for language switcher */
+@media (prefers-color-scheme: dark) {
+    .lang-dropdown {
+        background: var(--background-alt);
+        border: 1px solid var(--border-color);
+    }
+
+    .lang-option {
+        color: var(--text-primary);
+    }
+}
+
+/* Mobile language switcher */
+@media (max-width: 768px) {
+    .language-switcher {
+        order: -1;
+        margin-left: 0;
+        margin-right: var(--spacing-4);
+    }
+
+    .current-lang {
+        padding: var(--spacing-2) var(--spacing-3);
+        min-width: 50px;
+        font-size: 0.75rem;
+    }
+
+    .lang-dropdown {
+        right: auto;
+        left: 0;
+    }
+}
