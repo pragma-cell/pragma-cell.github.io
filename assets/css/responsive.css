@@ -466,75 +466,116 @@
 /* Language Switcher Styles */
 .language-switcher {
     position: relative;
-    display: inline-block;
-    margin-left: var(--spacing-4);
+    display: inline-flex;
+    align-items: center;
+    margin-left: var(--spacing-6);
 }
 
 .current-lang {
-    background: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    color: var(--primary-light);
     padding: var(--spacing-2) var(--spacing-4);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-lg);
     font-weight: 600;
     font-size: var(--font-size-sm);
     cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 60px;
+    transition: all var(--transition-base);
+    min-width: 70px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.current-lang::before {
+    content: '🌐';
+    font-size: 1rem;
+    filter: grayscale(0);
+    transition: transform var(--transition-base);
+}
+
+.lang-text {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .current-lang:hover {
-    background: var(--primary-color);
-    color: white;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+}
+
+.current-lang:hover::before {
+    transform: rotate(360deg);
+}
+
+.current-lang:active {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
 }
 
 .lang-dropdown {
     position: absolute;
-    top: calc(100% + var(--spacing-2));
+    top: calc(100% + var(--spacing-3));
     right: 0;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-lg);
-    min-width: 140px;
+    background: var(--background-elevated);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl), 0 0 30px rgba(59, 130, 246, 0.2);
+    min-width: 160px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transform: translateY(-10px) scale(0.95);
+    transition: all var(--transition-base);
     z-index: 1000;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .lang-dropdown.active {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .lang-option {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
     padding: var(--spacing-3) var(--spacing-4);
-    color: var(--text-primary);
+    color: var(--text-secondary);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
     font-size: var(--font-size-sm);
     font-weight: 500;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    position: relative;
+}
+
+.lang-option:last-child {
+    border-bottom: none;
+}
+
+.lang-option::before {
+    content: attr(data-flag);
+    font-size: 1.2rem;
+    line-height: 1;
 }
 
 .lang-option:hover {
-    background: var(--primary-color);
-    color: white;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+    color: var(--primary-light);
+    padding-left: calc(var(--spacing-4) + var(--spacing-2));
 }
 
-/* Dark theme adjustments for language switcher */
-@media (prefers-color-scheme: dark) {
-    .lang-dropdown {
-        background: var(--background-alt);
-        border: 1px solid var(--border-color);
-    }
-
-    .lang-option {
-        color: var(--text-primary);
-    }
+.lang-option.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    color: var(--primary-light);
+    font-weight: 600;
 }
 
 /* Mobile language switcher */
@@ -547,12 +588,13 @@
 
     .current-lang {
         padding: var(--spacing-2) var(--spacing-3);
-        min-width: 50px;
-        font-size: 0.75rem;
+        min-width: 60px;
+        font-size: var(--font-size-xs);
     }
 
     .lang-dropdown {
         right: auto;
         left: 0;
+        min-width: 140px;
     }
 }
