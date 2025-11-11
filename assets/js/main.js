@@ -147,7 +147,8 @@ function initContactForm() {
             // Validate form
             if (validateForm(formObject)) {
                 // Simulate form submission
-                showFormMessage('Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons bientôt.', 'success');
+                const successMessage = window.i18n ? window.i18n.t('contact.formSuccessMessage') : 'Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons bientôt.';
+                showFormMessage(successMessage, 'success');
                 form.reset();
             }
         });
@@ -157,41 +158,44 @@ function initContactForm() {
 // Form validation
 function validateForm(data) {
     const errors = [];
-    
+
+    // Get translation function
+    const t = (key, fallback) => window.i18n ? window.i18n.t(key) : fallback;
+
     // Required fields
     if (!data.name || data.name.trim().length < 2) {
-        errors.push('Le nom doit contenir au moins 2 caractères.');
+        errors.push(t('contact.formErrorName', 'Le nom doit contenir au moins 2 caractères.'));
         highlightField('name', true);
     } else {
         highlightField('name', false);
     }
-    
+
     if (!data.email || !isValidEmail(data.email)) {
-        errors.push('Veuillez entrer une adresse email valide.');
+        errors.push(t('contact.formErrorEmail', 'Veuillez entrer une adresse email valide.'));
         highlightField('email', true);
     } else {
         highlightField('email', false);
     }
-    
+
     if (!data.subject) {
-        errors.push('Veuillez sélectionner un sujet.');
+        errors.push(t('contact.formErrorSubject', 'Veuillez sélectionner un sujet.'));
         highlightField('subject', true);
     } else {
         highlightField('subject', false);
     }
-    
+
     if (!data.message || data.message.trim().length < 10) {
-        errors.push('Le message doit contenir au moins 10 caractères.');
+        errors.push(t('contact.formErrorMessage', 'Le message doit contenir au moins 10 caractères.'));
         highlightField('message', true);
     } else {
         highlightField('message', false);
     }
-    
+
     if (errors.length > 0) {
         showFormMessage(errors.join(' '), 'error');
         return false;
     }
-    
+
     return true;
 }
 
@@ -429,9 +433,16 @@ function preloadImages() {
 // Initialize preloading
 preloadImages();
 
+// Update validation messages when language changes
+function updateValidationMessages() {
+    // This function can be called when language changes to update any displayed messages
+    // Currently handled by re-validation on form submit
+}
+
 // Export functions for potential external use
 window.PragmaCell = {
     showMessage: showFormMessage,
     validateEmail: isValidEmail,
-    animateNumber: animateNumber
+    animateNumber: animateNumber,
+    updateValidationMessages: updateValidationMessages
 };

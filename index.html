@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/theme-dark-premium.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     
     <!-- Favicon -->
@@ -36,12 +36,20 @@
                 <span class="logo-text">Pragma IT</span>
             </div>
             <ul class="nav-menu">
-                <li><a href="#accueil" class="nav-link">Accueil</a></li>
-                <li><a href="#philosophie" class="nav-link">Philosophie</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#equipe" class="nav-link">Équipe</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#accueil" class="nav-link" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="#philosophie" class="nav-link" data-i18n="nav.philosophy">Philosophie</a></li>
+                <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+                <li><a href="#equipe" class="nav-link" data-i18n="nav.team">Équipe</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
             </ul>
+            <div class="language-switcher">
+                <button class="current-lang" aria-label="Select language">FR</button>
+                <div class="lang-dropdown">
+                    <a href="#" class="lang-option" data-lang="fr">Français</a>
+                    <a href="#" class="lang-option" data-lang="nl">Nederlands</a>
+                    <a href="#" class="lang-option" data-lang="en">English</a>
+                </div>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -54,11 +62,11 @@
     <section id="accueil" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">L'informatique au service de <span class="highlight">votre business</span></h1>
-                <p class="hero-subtitle">Nous accompagnons les PME et TPE dans leur transformation numérique de manière pragmatique et mesurée. Parce que l'informatique n'est pas une finalité, mais un moyen d'atteindre vos objectifs.</p>
+                <h1 class="hero-title"><span data-i18n="hero.title">L'informatique au service de</span> <span class="highlight" data-i18n="hero.titleHighlight">votre business</span></h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Nous accompagnons les PME et TPE dans leur transformation numérique de manière pragmatique et mesurée. Parce que l'informatique n'est pas une finalité, mais un moyen d'atteindre vos objectifs.</p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Parlons de votre projet</a>
-                    <a href="#philosophie" class="btn btn-secondary">Notre approche</a>
+                    <a href="#contact" class="btn btn-primary" data-i18n="hero.ctaPrimary">Parlons de votre projet</a>
+                    <a href="#philosophie" class="btn btn-secondary" data-i18n="hero.ctaSecondary">Notre approche</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -67,16 +75,16 @@
         </div>
         <div class="hero-stats">
             <div class="stat">
-                <span class="stat-number">15+</span>
-                <span class="stat-label">Années d'expérience</span>
+                <span class="stat-number" data-i18n="hero.stat1Number">15+</span>
+                <span class="stat-label" data-i18n="hero.stat1Label">Années d'expérience</span>
             </div>
             <div class="stat">
-                <span class="stat-number">10+</span>
-                <span class="stat-label">Business différents</span>
+                <span class="stat-number" data-i18n="hero.stat2Number">10+</span>
+                <span class="stat-label" data-i18n="hero.stat2Label">Business différents</span>
             </div>
             <div class="stat">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Pragmatisme</span>
+                <span class="stat-number" data-i18n="hero.stat3Number">100%</span>
+                <span class="stat-label" data-i18n="hero.stat3Label">Pragmatisme</span>
             </div>
         </div>
     </section>
@@ -85,41 +93,41 @@
     <section id="philosophie" class="philosophy">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Notre Philosophie</h2>
-                <p class="section-subtitle">Les principes qui guident notre approche</p>
+                <h2 class="section-title" data-i18n="philosophy.title">Notre Philosophie</h2>
+                <p class="section-subtitle" data-i18n="philosophy.subtitle">Les principes qui guident notre approche</p>
             </div>
-            
+
             <div class="philosophy-grid">
                 <div class="philosophy-card">
                     <div class="card-icon">
                         <img src="assets/icons/tool.svg" alt="Outil">
                     </div>
-                    <h3 class="card-title">L'informatique est un moyen, pas une fin</h3>
-                    <p class="card-description">Votre système informatique doit servir votre business, pas l'inverse. Nous privilégions toujours la simplicité d'usage et l'efficacité opérationnelle.</p>
+                    <h3 class="card-title" data-i18n="philosophy.card1Title">L'informatique est un moyen, pas une fin</h3>
+                    <p class="card-description" data-i18n="philosophy.card1Description">Votre système informatique doit servir votre business, pas l'inverse. Nous privilégions toujours la simplicité d'usage et l'efficacité opérationnelle.</p>
                     <div class="card-example">
-                        <strong>Exemple :</strong> Plutôt qu'un système complexe à 50k€, nous préférons une solution simple à 2k€ qui améliore réellement votre productivité.
+                        <strong data-i18n="philosophy.card1Example">Exemple :</strong> <span data-i18n="philosophy.card1ExampleText">Plutôt qu'un système complexe à 50k€, nous préférons une solution simple à 2k€ qui améliore réellement votre productivité.</span>
                     </div>
                 </div>
-                
+
                 <div class="philosophy-card">
                     <div class="card-icon">
                         <img src="assets/icons/growth.svg" alt="Croissance">
                     </div>
-                    <h3 class="card-title">Anticipez la digitalisation</h3>
-                    <p class="card-description">La transformation numérique est inévitable. Vous pouvez la subir ou en tirer parti. Nous vous aidons à l'anticiper pour en faire un avantage concurrentiel.</p>
+                    <h3 class="card-title" data-i18n="philosophy.card2Title">Anticipez la digitalisation</h3>
+                    <p class="card-description" data-i18n="philosophy.card2Description">La transformation numérique est inévitable. Vous pouvez la subir ou en tirer parti. Nous vous aidons à l'anticiper pour en faire un avantage concurrentiel.</p>
                     <div class="card-example">
-                        <strong>Résultat :</strong> Une migration planifiée et accompagnée évite les coûts cachés et les arrêts de production.
+                        <strong data-i18n="philosophy.card2Example">Résultat :</strong> <span data-i18n="philosophy.card2ExampleText">Une migration planifiée et accompagnée évite les coûts cachés et les arrêts de production.</span>
                     </div>
                 </div>
-                
+
                 <div class="philosophy-card">
                     <div class="card-icon">
                         <img src="assets/icons/shield.svg" alt="Protection">
                     </div>
-                    <h3 class="card-title">Maîtrisez les enjeux numériques</h3>
-                    <p class="card-description">Un dirigeant ne peut plus ignorer les questions de sécurité, conformité et digitalisation. Nous vous formons pour prendre les bonnes décisions.</p>
+                    <h3 class="card-title" data-i18n="philosophy.card3Title">Maîtrisez les enjeux numériques</h3>
+                    <p class="card-description" data-i18n="philosophy.card3Description">Un dirigeant ne peut plus ignorer les questions de sécurité, conformité et digitalisation. Nous vous formons pour prendre les bonnes décisions.</p>
                     <div class="card-example">
-                        <strong>Bénéfice :</strong> Prenez des décisions éclairées et négociez d'égal à égal avec vos prestataires IT.
+                        <strong data-i18n="philosophy.card3Example">Bénéfice :</strong> <span data-i18n="philosophy.card3ExampleText">Prenez des décisions éclairées et négociez d'égal à égal avec vos prestataires IT.</span>
                     </div>
                 </div>
             </div>
@@ -130,50 +138,50 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Nos Services</h2>
-                <p class="section-subtitle">Un accompagnement complet pour votre transformation numérique</p>
+                <h2 class="section-title" data-i18n="services.title">Nos Services</h2>
+                <p class="section-subtitle" data-i18n="services.subtitle">Un accompagnement complet pour votre transformation numérique</p>
             </div>
-            
+
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="assets/icons/audit.svg" alt="Audit">
                     </div>
-                    <h3 class="service-title">Audit & Stratégie</h3>
-                    <p class="service-description">Analyse de votre maturité numérique et définition d'une roadmap personnalisée sur 2-3 ans.</p>
+                    <h3 class="service-title" data-i18n="services.service1Title">Audit & Stratégie</h3>
+                    <p class="service-description" data-i18n="services.service1Description">Analyse de votre maturité numérique et définition d'une roadmap personnalisée sur 2-3 ans.</p>
                     <ul class="service-features">
-                        <li>Audit de l'existant</li>
-                        <li>Identification des points de friction</li>
-                        <li>Roadmap priorisée</li>
-                        <li>Estimation budgétaire</li>
+                        <li data-i18n="services.service1Feature1">Audit de l'existant</li>
+                        <li data-i18n="services.service1Feature2">Identification des points de friction</li>
+                        <li data-i18n="services.service1Feature3">Roadmap priorisée</li>
+                        <li data-i18n="services.service1Feature4">Estimation budgétaire</li>
                     </ul>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="assets/icons/implementation.svg" alt="Implémentation">
                     </div>
-                    <h3 class="service-title">Implémentation</h3>
-                    <p class="service-description">Mise en œuvre progressive de solutions adaptées à votre contexte et vos contraintes.</p>
+                    <h3 class="service-title" data-i18n="services.service2Title">Implémentation</h3>
+                    <p class="service-description" data-i18n="services.service2Description">Mise en œuvre progressive de solutions adaptées à votre contexte et vos contraintes.</p>
                     <ul class="service-features">
-                        <li>Développement sur mesure</li>
-                        <li>Intégration de solutions existantes</li>
-                        <li>Migration de données</li>
-                        <li>Tests et validation</li>
+                        <li data-i18n="services.service2Feature1">Développement sur mesure</li>
+                        <li data-i18n="services.service2Feature2">Intégration de solutions existantes</li>
+                        <li data-i18n="services.service2Feature3">Migration de données</li>
+                        <li data-i18n="services.service2Feature4">Tests et validation</li>
                     </ul>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="assets/icons/training.svg" alt="Formation">
                     </div>
-                    <h3 class="service-title">Formation & Accompagnement</h3>
-                    <p class="service-description">Formation de vos équipes et accompagnement pour garantir l'adoption des nouveaux outils.</p>
+                    <h3 class="service-title" data-i18n="services.service3Title">Formation & Accompagnement</h3>
+                    <p class="service-description" data-i18n="services.service3Description">Formation de vos équipes et accompagnement pour garantir l'adoption des nouveaux outils.</p>
                     <ul class="service-features">
-                        <li>Formation utilisateurs</li>
-                        <li>Sessions dirigeants</li>
-                        <li>Documentation</li>
-                        <li>Support post-déploiement</li>
+                        <li data-i18n="services.service3Feature1">Formation utilisateurs</li>
+                        <li data-i18n="services.service3Feature2">Sessions dirigeants</li>
+                        <li data-i18n="services.service3Feature3">Documentation</li>
+                        <li data-i18n="services.service3Feature4">Support post-déploiement</li>
                     </ul>
                 </div>
             </div>
@@ -184,55 +192,55 @@
     <section id="equipe" class="team">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Notre Équipe</h2>
-                <p class="section-subtitle">Une équipe experte au service de votre transformation numérique</p>
+                <h2 class="section-title" data-i18n="team.title">Notre Équipe</h2>
+                <p class="section-subtitle" data-i18n="team.subtitle">Une équipe experte au service de votre transformation numérique</p>
             </div>
-            
+
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-image">
                         <img src="assets/images/team-ceo.jpg" alt="CEO">
                     </div>
                     <div class="team-content">
-                        <h3 class="team-name">Chief Executive Officer</h3>
-                        <p class="team-role">Développeur & Stratégie</p>
-                        <p class="team-description">Expert en développement full-stack et stratégie digitale. Accompagne les dirigeants dans leurs décisions technologiques.</p>
+                        <h3 class="team-name" data-i18n="team.ceo">Chief Executive Officer</h3>
+                        <p class="team-role" data-i18n="team.ceoRole">Développeur & Stratégie</p>
+                        <p class="team-description" data-i18n="team.ceoDescription">Expert en développement full-stack et stratégie digitale. Accompagne les dirigeants dans leurs décisions technologiques.</p>
                         <div class="team-skills">
-                            <span class="skill">Leadership</span>
-                            <span class="skill">Full-Stack</span>
-                            <span class="skill">Stratégie</span>
+                            <span class="skill" data-i18n="team.ceoSkill1">Leadership</span>
+                            <span class="skill" data-i18n="team.ceoSkill2">Full-Stack</span>
+                            <span class="skill" data-i18n="team.ceoSkill3">Stratégie</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="team-card">
                     <div class="team-image">
                         <img src="assets/images/team-cto.jpg" alt="CTO">
                     </div>
                     <div class="team-content">
-                        <h3 class="team-name">Chief Technology Officer</h3>
-                        <p class="team-role">Développeur & Architecture</p>
-                        <p class="team-description">Architecte logiciel expérimenté, spécialisé dans les solutions scalables et l'optimisation des performances.</p>
+                        <h3 class="team-name" data-i18n="team.cto">Chief Technology Officer</h3>
+                        <p class="team-role" data-i18n="team.ctoRole">Développeur & Architecture</p>
+                        <p class="team-description" data-i18n="team.ctoDescription">Architecte logiciel expérimenté, spécialisé dans les solutions scalables et l'optimisation des performances.</p>
                         <div class="team-skills">
-                            <span class="skill">Architecture</span>
-                            <span class="skill">DevOps</span>
-                            <span class="skill">Performance</span>
+                            <span class="skill" data-i18n="team.ctoSkill1">Architecture</span>
+                            <span class="skill" data-i18n="team.ctoSkill2">DevOps</span>
+                            <span class="skill" data-i18n="team.ctoSkill3">Performance</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="team-card">
                     <div class="team-image">
                         <img src="assets/images/team-cro.jpg" alt="CRO">
                     </div>
                     <div class="team-content">
-                        <h3 class="team-name">Chief Risk Officer</h3>
-                        <p class="team-role">Spécialiste Cybersécurité</p>
-                        <p class="team-description">Expert en sécurité informatique et gestion des risques. Protège vos données et garantit la conformité réglementaire.</p>
+                        <h3 class="team-name" data-i18n="team.cro">Chief Risk Officer</h3>
+                        <p class="team-role" data-i18n="team.croRole">Spécialiste Cybersécurité</p>
+                        <p class="team-description" data-i18n="team.croDescription">Expert en sécurité informatique et gestion des risques. Protège vos données et garantit la conformité réglementaire.</p>
                         <div class="team-skills">
-                            <span class="skill">Cybersécurité</span>
-                            <span class="skill">RGPD</span>
-                            <span class="skill">Audit</span>
+                            <span class="skill" data-i18n="team.croSkill1">Cybersécurité</span>
+                            <span class="skill" data-i18n="team.croSkill2">RGPD</span>
+                            <span class="skill" data-i18n="team.croSkill3">Audit</span>
                         </div>
                     </div>
                 </div>
@@ -244,30 +252,30 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Discutons de votre projet</h2>
-                <p class="section-subtitle">Un projet de digitalisation ? Parlons-en ensemble</p>
+                <h2 class="section-title" data-i18n="contact.title">Discutons de votre projet</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Un projet de digitalisation ? Parlons-en ensemble</p>
             </div>
-            
+
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Pragma IT</h3>
+                    <h3 data-i18n="contact.companyName">Pragma IT</h3>
                     <div class="contact-item">
                         <img src="assets/icons/phone.svg" alt="Téléphone">
-                        <span>+32 491 251 910</span>
+                        <span data-i18n="contact.phone">+32 491 251 910</span>
                     </div>
                     <div class="contact-item">
                         <img src="assets/icons/email.svg" alt="Email">
-                        <span>info@pragmacell.be</span>
+                        <span data-i18n="contact.email">info@pragmacell.be</span>
                     </div>
                     <div class="contact-item">
                         <img src="assets/icons/location.svg" alt="Localisation">
-                        <span>Rue de Huy 129, 4280 Hannut</span>
+                        <span data-i18n="contact.address">Rue de Huy 129, 4280 Hannut</span>
                     </div>
                     <div class="contact-item">
                         <img src="assets/icons/business.svg" alt="TVA">
-                        <span>TVA : BE1013120161</span>
+                        <span data-i18n="contact.vat">TVA : BE1013120161</span>
                     </div>
-                    
+
                     <div class="social-links">
                         <a href="#" class="social-link">
                             <img src="assets/icons/linkedin.svg" alt="LinkedIn">
@@ -277,36 +285,36 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <label for="name">Nom *</label>
+                        <label for="name" data-i18n="contact.formName">Nom *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email *</label>
+                        <label for="email" data-i18n="contact.formEmail">Email *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="company">Entreprise</label>
+                        <label for="company" data-i18n="contact.formCompany">Entreprise</label>
                         <input type="text" id="company" name="company">
                     </div>
                     <div class="form-group">
-                        <label for="subject">Sujet *</label>
+                        <label for="subject" data-i18n="contact.formSubject">Sujet *</label>
                         <select id="subject" name="subject" required>
-                            <option value="">Choisissez un sujet</option>
-                            <option value="audit">Audit & Stratégie</option>
-                            <option value="development">Développement</option>
-                            <option value="migration">Migration système</option>
-                            <option value="formation">Formation</option>
-                            <option value="autre">Autre</option>
+                            <option value="" data-i18n="contact.formSubjectPlaceholder">Choisissez un sujet</option>
+                            <option value="audit" data-i18n="contact.formSubjectAudit">Audit & Stratégie</option>
+                            <option value="development" data-i18n="contact.formSubjectDevelopment">Développement</option>
+                            <option value="migration" data-i18n="contact.formSubjectMigration">Migration système</option>
+                            <option value="formation" data-i18n="contact.formSubjectTraining">Formation</option>
+                            <option value="autre" data-i18n="contact.formSubjectOther">Autre</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required placeholder="Décrivez votre projet ou vos besoins..."></textarea>
+                        <label for="message" data-i18n="contact.formMessage">Message *</label>
+                        <textarea id="message" name="message" rows="5" required data-i18n-placeholder="contact.formMessagePlaceholder"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="contact.formSubmit">Envoyer le message</button>
                 </form>
             </div>
         </div>
@@ -318,38 +326,39 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <img src="assets/images/logo.svg" alt="Pragma IT" class="footer-logo">
-                    <p>L'informatique au service de votre business</p>
+                    <p data-i18n="footer.tagline">L'informatique au service de votre business</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
-                        <h4>Services</h4>
+                        <h4 data-i18n="footer.servicesTitle">Services</h4>
                         <ul>
-                            <li><a href="#services">Audit & Stratégie</a></li>
-                            <li><a href="#services">Implémentation</a></li>
-                            <li><a href="#services">Formation</a></li>
+                            <li><a href="#services" data-i18n="footer.service1">Audit & Stratégie</a></li>
+                            <li><a href="#services" data-i18n="footer.service2">Implémentation</a></li>
+                            <li><a href="#services" data-i18n="footer.service3">Formation</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
-                        <h4>Entreprise</h4>
+                        <h4 data-i18n="footer.companyTitle">Entreprise</h4>
                         <ul>
-                            <li><a href="#philosophie">Notre philosophie</a></li>
-                            <li><a href="#equipe">Notre équipe</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#philosophie" data-i18n="footer.company1">Notre philosophie</a></li>
+                            <li><a href="#equipe" data-i18n="footer.company2">Notre équipe</a></li>
+                            <li><a href="#contact" data-i18n="footer.company3">Contact</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Pragma IT. Tous droits réservés.</p>
+                <p data-i18n="footer.copyright">&copy; 2024 Pragma IT. Tous droits réservés.</p>
                 <div class="footer-legal">
-                    <a href="#">Mentions légales</a>
-                    <a href="#">Politique de confidentialité</a>
+                    <a href="#" data-i18n="footer.legal">Mentions légales</a>
+                    <a href="#" data-i18n="footer.privacy">Politique de confidentialité</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
