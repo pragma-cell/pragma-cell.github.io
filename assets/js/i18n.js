@@ -30,16 +30,19 @@ class I18n {
     // Load translation file
     async loadTranslations(lang) {
         try {
+            console.log(`[i18n] Loading translations for: ${lang}`);
             const response = await fetch(`assets/translations/${lang}.json`);
             if (!response.ok) {
-                throw new Error(`Failed to load translations for ${lang}`);
+                throw new Error(`Failed to load translations for ${lang}: ${response.status}`);
             }
             this.translations[lang] = await response.json();
+            console.log(`[i18n] Successfully loaded translations for: ${lang}`);
             return this.translations[lang];
         } catch (error) {
-            console.error('Translation loading error:', error);
+            console.error('[i18n] Translation loading error:', error);
             // Load fallback language if available
             if (lang !== this.fallbackLanguage && !this.translations[this.fallbackLanguage]) {
+                console.log(`[i18n] Loading fallback language: ${this.fallbackLanguage}`);
                 return this.loadTranslations(this.fallbackLanguage);
             }
             return null;
@@ -61,7 +64,7 @@ class I18n {
                     if (value && typeof value === 'object' && fallbackKey in value) {
                         value = value[fallbackKey];
                     } else {
-                        console.warn(`Translation key not found: ${keyPath}`);
+                        console.warn(`[i18n] Translation key not found: ${keyPath}`);
                         return keyPath;
                     }
                 }
@@ -74,26 +77,36 @@ class I18n {
 
     // Initialize i18n system
     async init() {
-        // Load translations for current language
-        await this.loadTranslations(this.currentLang);
+        try {
+            console.log(`[i18n] Starting initialization with language: ${this.currentLang}`);
 
-        // Preload other languages for faster switching
-        this.supportedLanguages.forEach(lang => {
-            if (lang !== this.currentLang) {
-                this.loadTranslations(lang);
-            }
-        });
+            // Load translations for current language
+            await this.loadTranslations(this.currentLang);
 
-        // Apply translations to the page
-        this.applyTranslations();
+            // Preload other languages for faster switching (non-blocking)
+            this.supportedLanguages.forEach(lang => {
+                if (lang !== this.currentLang) {
+                    this.loadTranslations(lang).catch(err => {
+                        console.warn(`[i18n] Failed to preload ${lang}:`, err);
+                    });
+                }
+            });
 
-        // Update HTML lang attribute
-        document.documentElement.lang = this.currentLang;
+            // Apply translations to the page
+            this.applyTranslations();
 
-        // Initialize language switcher
-        this.initLanguageSwitcher();
+            // Update HTML lang attribute
+            document.documentElement.lang = this.currentLang;
 
-        return this;
+            // Initialize language switcher
+            this.initLanguageSwitcher();
+
+            console.log('[i18n] Initialization complete');
+            return this;
+        } catch (error) {
+            console.error('[i18n] Initialization error:', error);
+            throw error;
+        }
     }
 
     // Apply translations to elements with data-i18n attribute
@@ -166,26 +179,43 @@ class I18n {
     // Initialize language switcher
     initLanguageSwitcher() {
         const languageSwitcher = document.querySelector('.language-switcher');
-        if (!languageSwitcher) return;
+        if (!languageSwitcher) {
+            console.warn('[i18n] Language switcher not found');
+            return;
+        }
 
         const currentLangButton = languageSwitcher.querySelector('.current-lang');
+        const langText = currentLangButton?.querySelector('.lang-text');
         const dropdown = languageSwitcher.querySelector('.lang-dropdown');
 
+        console.log('[i18n] Initializing language switcher');
+
         // Update current language display
-        if (currentLangButton) {
+        if (langText) {
+            langText.textContent = this.currentLang.toUpperCase();
+        } else if (currentLangButton) {
+            // Fallback if .lang-text doesn't exist
             currentLangButton.textContent = this.currentLang.toUpperCase();
         }
+
+        // Update active state for current language
+        this.updateActiveLangOption();
 
         // Toggle dropdown
         if (currentLangButton && dropdown) {
             currentLangButton.addEventListener('click', (e) => {
                 e.stopPropagation();
-                dropdown.classList.toggle('active');
+                const isOpen = dropdown.classList.toggle('active');
+                currentLangButton.setAttribute('aria-expanded', isOpen);
+                console.log(`[i18n] Dropdown ${isOpen ? 'opened' : 'closed'}`);
             });
 
             // Close dropdown when clicking outside
-            document.addEventListener('click', () => {
-                dropdown.classList.remove('active');
+            document.addEventListener('click', (e) => {
+                if (!languageSwitcher.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                    currentLangButton.setAttribute('aria-expanded', 'false');
+                }
             });
         }
 
@@ -193,7 +223,10 @@ class I18n {
         languageSwitcher.querySelectorAll('.lang-option').forEach(option => {
             option.addEventListener('click', async (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 const newLang = option.getAttribute('data-lang');
+
+                console.log(`[i18n] Language option clicked: ${newLang}`);
 
                 if (newLang && newLang !== this.currentLang) {
                     await this.changeLanguage(newLang);
@@ -202,46 +235,77 @@ class I18n {
         });
     }
 
+    // Update active state for language options
+    updateActiveLangOption() {
+        document.querySelectorAll('.lang-option').forEach(option => {
+            const lang = option.getAttribute('data-lang');
+            if (lang === this.currentLang) {
+                option.classList.add('active');
+            } else {
+                option.classList.remove('active');
+            }
+        });
+    }
+
     // Change language
     async changeLanguage(lang) {
-        if (!this.supportedLanguages.includes(lang)) {
-            console.error(`Language ${lang} is not supported`);
-            return;
-        }
+        try {
+            if (!this.supportedLanguages.includes(lang)) {
+                console.error(`[i18n] Language ${lang} is not supported`);
+                return;
+            }
 
-        // Load translations if not already loaded
-        if (!this.translations[lang]) {
-            await this.loadTranslations(lang);
-        }
+            console.log(`[i18n] Changing language to: ${lang}`);
 
-        // Update current language
-        this.currentLang = lang;
-        this.setStoredLanguage(lang);
+            // Load translations if not already loaded
+            if (!this.translations[lang]) {
+                await this.loadTranslations(lang);
+            }
 
-        // Update HTML lang attribute
-        document.documentElement.lang = lang;
+            // Update current language
+            this.currentLang = lang;
+            this.setStoredLanguage(lang);
 
-        // Update current language display
-        const currentLangButton = document.querySelector('.current-lang');
-        if (currentLangButton) {
-            currentLangButton.textContent = lang.toUpperCase();
-        }
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
 
-        // Apply translations
-        this.applyTranslations();
+            // Update current language display
+            const langText = document.querySelector('.lang-text');
+            const currentLangButton = document.querySelector('.current-lang');
 
-        // Close dropdown
-        const dropdown = document.querySelector('.lang-dropdown');
-        if (dropdown) {
-            dropdown.classList.remove('active');
-        }
+            if (langText) {
+                langText.textContent = lang.toUpperCase();
+            } else if (currentLangButton) {
+                // Fallback
+                currentLangButton.textContent = lang.toUpperCase();
+            }
 
-        // Trigger custom event
-        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+            // Update active state
+            this.updateActiveLangOption();
 
-        // Update form validation messages
-        if (window.PragmaCell && window.PragmaCell.updateValidationMessages) {
-            window.PragmaCell.updateValidationMessages();
+            // Apply translations
+            this.applyTranslations();
+
+            // Close dropdown
+            const dropdown = document.querySelector('.lang-dropdown');
+            if (dropdown) {
+                dropdown.classList.remove('active');
+            }
+            if (currentLangButton) {
+                currentLangButton.setAttribute('aria-expanded', 'false');
+            }
+
+            // Trigger custom event
+            window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+
+            // Update form validation messages
+            if (window.PragmaCell && window.PragmaCell.updateValidationMessages) {
+                window.PragmaCell.updateValidationMessages();
+            }
+
+            console.log(`[i18n] Language changed successfully to: ${lang}`);
+        } catch (error) {
+            console.error('[i18n] Error changing language:', error);
         }
     }
 
@@ -256,14 +320,25 @@ class I18n {
     }
 }
 
-// Create global instance
-window.i18n = new I18n();
+// Create and export global instance
+const i18nInstance = new I18n();
+window.i18n = i18nInstance;
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        window.i18n.init();
+        console.log('[i18n] DOM loaded, initializing...');
+        window.i18n.init().then(() => {
+            console.log('[i18n] Ready!');
+        }).catch(error => {
+            console.error('[i18n] Failed to initialize:', error);
+        });
     });
 } else {
-    window.i18n.init();
+    console.log('[i18n] DOM already loaded, initializing immediately...');
+    window.i18n.init().then(() => {
+        console.log('[i18n] Ready!');
+    }).catch(error => {
+        console.error('[i18n] Failed to initialize:', error);
+    });
 }
