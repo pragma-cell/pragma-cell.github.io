@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test i18n</title>
+    <link rel="stylesheet" href="assets/css/theme-dark-premium.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        body {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: var(--background-alt);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .nav-container {
+            background: var(--background-elevated);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        h1, h2 {
+            color: var(--primary-light);
+        }
+        .test-item {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 3px solid var(--primary-color);
+            border-radius: var(--radius-base);
+        }
+        .log-output {
+            background: #000;
+            color: #0f0;
+            padding: 1rem;
+            border-radius: var(--radius-base);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-base);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .status.ok {
+            background: var(--success-color);
+            color: white;
+        }
+        .status.pending {
+            background: var(--warning-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <h2>Test Sélecteur de Langue</h2>
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+            <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
+            <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h1>🧪 Test du Système i18n</h1>
+
+        <div class="test-item">
+            <strong>Navigation Home:</strong> <span data-i18n="nav.home">Accueil</span>
+        </div>
+
+        <div class="test-item">
+            <strong>Hero Title:</strong> <span data-i18n="hero.title">L'informatique au service de</span>
+        </div>
+
+        <div class="test-item">
+            <strong>Hero Subtitle:</strong> <span data-i18n="hero.subtitle">Nous accompagnons...</span>
+        </div>
+
+        <div class="test-item">
+            <strong>Team Title:</strong> <span data-i18n="team.title">Notre Réseau d'Experts</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 État du Système</h2>
+        <div class="test-item">
+            <strong>Langue courante:</strong> <span id="current-lang" class="status pending">-</span>
+        </div>
+        <div class="test-item">
+            <strong>Langues chargées:</strong> <span id="loaded-langs" class="status pending">-</span>
+        </div>
+        <div class="test-item">
+            <strong>Statut:</strong> <span id="status" class="status pending">Chargement...</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📝 Console Logs</h2>
+        <div id="logs" class="log-output">Chargement...</div>
+    </div>
+
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // Capture console logs
+        const logsDiv = document.getElementById('logs');
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        function addLog(type, ...args) {
+            const message = args.join(' ');
+            const timestamp = new Date().toLocaleTimeString();
+            const logLine = document.createElement('div');
+            logLine.textContent = `[${timestamp}] [${type}] ${message}`;
+            logLine.style.color = type === 'ERROR' ? '#f00' : type === 'WARN' ? '#ff0' : '#0f0';
+            logsDiv.appendChild(logLine);
+            logsDiv.scrollTop = logsDiv.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            if (args[0] && args[0].includes('[i18n]')) {
+                addLog('INFO', ...args);
+            }
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            if (args[0] && args[0].includes('[i18n]')) {
+                addLog('ERROR', ...args);
+            }
+        };
+
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            if (args[0] && args[0].includes('[i18n]')) {
+                addLog('WARN', ...args);
+            }
+        };
+
+        // Update status
+        function updateStatus() {
+            setTimeout(() => {
+                if (window.i18n) {
+                    document.getElementById('current-lang').textContent = window.i18n.getCurrentLanguage().toUpperCase();
+                    document.getElementById('current-lang').className = 'status ok';
+
+                    document.getElementById('loaded-langs').textContent = window.i18n.getSupportedLanguages().join(', ');
+                    document.getElementById('loaded-langs').className = 'status ok';
+
+                    document.getElementById('status').textContent = 'Initialisé ✓';
+                    document.getElementById('status').className = 'status ok';
+                }
+            }, 1000);
+        }
+
+        // Listen for language changes
+        window.addEventListener('languageChanged', (e) => {
+            addLog('EVENT', `Language changed to: ${e.detail.language}`);
+            updateStatus();
+        });
+
+        updateStatus();
+    </script>
+</body>
+</html>
