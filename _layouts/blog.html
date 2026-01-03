@@ -1,0 +1,121 @@
+---
+layout: default
+---
+
+<section class="blog-index">
+    <!-- Blog Hero -->
+    <div class="blog-hero">
+        <div class="container">
+            <h1 class="blog-title">{{ page.title | default: "Blog" }}</h1>
+            <p class="blog-subtitle">{{ page.description | default: "Conseils et actualités sur la digitalisation des PME" }}</p>
+        </div>
+    </div>
+
+    <!-- Featured Post -->
+    {% if page.featured_post %}
+    {% assign featured = site.posts | where: "slug", page.featured_post | first %}
+    {% if featured %}
+    <div class="featured-post">
+        <div class="container">
+            <div class="featured-card">
+                {% if featured.image %}
+                <div class="featured-image">
+                    <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}">
+                </div>
+                {% endif %}
+                <div class="featured-content">
+                    <span class="featured-badge">Article vedette</span>
+                    <h2 class="featured-title">
+                        <a href="{{ featured.url | relative_url }}">{{ featured.title }}</a>
+                    </h2>
+                    <p class="featured-excerpt">{{ featured.excerpt | strip_html | truncatewords: 30 }}</p>
+                    <div class="featured-meta">
+                        <time>{{ featured.date | date: "%d %B %Y" }}</time>
+                        {% if featured.reading_time %}
+                        <span>{{ featured.reading_time }} min</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+
+    <!-- Blog Content -->
+    <div class="blog-content">
+        <div class="container">
+            {{ content }}
+
+            <!-- Posts Grid -->
+            <div class="posts-grid">
+                {% for post in paginator.posts %}
+                <article class="post-card">
+                    {% if post.image %}
+                    <a href="{{ post.url | relative_url }}" class="post-card-image">
+                        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                    </a>
+                    {% endif %}
+
+                    <div class="post-card-content">
+                        <div class="post-card-meta">
+                            <time class="post-card-date">{{ post.date | date: "%d %B %Y" }}</time>
+                            {% if post.categories %}
+                            <span class="post-card-category">{{ post.categories | first }}</span>
+                            {% endif %}
+                        </div>
+
+                        <h2 class="post-card-title">
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        </h2>
+
+                        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+
+                        <div class="post-card-footer">
+                            <a href="{{ post.url | relative_url }}" class="read-more">Lire la suite →</a>
+                            {% if post.reading_time %}
+                            <span class="reading-time">{{ post.reading_time }} min</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if paginator.total_pages > 1 %}
+            <nav class="pagination" role="navigation">
+                {% if paginator.previous_page %}
+                <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-btn">← Précédent</a>
+                {% else %}
+                <span class="pagination-btn disabled">← Précédent</span>
+                {% endif %}
+
+                <span class="pagination-info">
+                    Page {{ paginator.page }} sur {{ paginator.total_pages }}
+                </span>
+
+                {% if paginator.next_page %}
+                <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-btn">Suivant →</a>
+                {% else %}
+                <span class="pagination-btn disabled">Suivant →</span>
+                {% endif %}
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-card">
+                <h3>Restez informé</h3>
+                <p>Recevez nos derniers articles sur la digitalisation des PME</p>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" placeholder="Votre email" required>
+                    <button type="submit" class="btn btn-primary">S'abonner</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</section>

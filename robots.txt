@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pragma-cell.github.io/sitemap.xml
+
+# Disallow admin and config files
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /.idea/
+Disallow: /index-old.html
+
+# Allow blog
+Allow: /blog/
+
+# Crawl delay (optional, adjust if needed)
+Crawl-delay: 1

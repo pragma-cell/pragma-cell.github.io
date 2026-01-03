@@ -1,0 +1,96 @@
+# Site settings
+title: "Pragma IT - L'informatique au service de votre business"
+description: "Accompagnement pragmatique des PME et TPE dans leur digitalisation. Audit, stratégie, implémentation et formation pour une transformation numérique réussie."
+baseurl: ""
+url: "https://pragma-cell.github.io"
+logo: /assets/images/logo.svg
+
+# Author
+author:
+  name: "Pragma IT"
+  email: "info@pragmacell.be"
+  phone: "+32 491 251 910"
+  address: "Rue de Huy 129, 4280 Hannut, Belgique"
+  vat: "BE1013120161"
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:year/:month/:day/:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# SEO Settings
+lang: fr
+twitter:
+  username: pragmait
+  card: summary_large_image
+
+social:
+  name: Pragma IT
+  links:
+    - https://www.linkedin.com/company/pragma-it
+    - https://github.com/pragma-cell
+
+# Google Analytics (à configurer)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Pragma IT"
+      image: /assets/images/og-image.jpg
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      image: /assets/images/og-image.jpg
+
+# i18n support
+languages: ["fr", "nl", "en"]
+default_lang: "fr"
+exclude_from_localization: ["assets", "css", "js"]
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .claude
+  - .idea
+  - .git
+  - README.md
+  - theme-alternatives.md
+
+# Include
+include:
+  - _pages
+
+# Pagination
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# SEO keywords (global)
+keywords: "digitalisation, transformation numérique, consulting IT, PME, TPE, pragmatisme, accompagnement digital, stratégie digitale, Belgium, Belgique"

@@ -1,0 +1,28 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="{{ '/' | relative_url }}">
+                <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Pragma IT" class="logo">
+                <span class="logo-text">Pragma IT</span>
+            </a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="{{ '/#accueil' | relative_url }}" class="nav-link" data-i18n="nav.home">Accueil</a></li>
+            <li><a href="{{ '/#philosophie' | relative_url }}" class="nav-link" data-i18n="nav.philosophy">Philosophie</a></li>
+            <li><a href="{{ '/#services' | relative_url }}" class="nav-link" data-i18n="nav.services">Services</a></li>
+            <li><a href="{{ '/#equipe' | relative_url }}" class="nav-link" data-i18n="nav.team">Équipe</a></li>
+            <li><a href="{{ '/blog/' | relative_url }}" class="nav-link" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="{{ '/#contact' | relative_url }}" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+            <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
+            <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</nav>

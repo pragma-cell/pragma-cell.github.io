@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'fr' }}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {% seo %}
+
+        <!-- Additional SEO -->
+        <meta
+            name="keywords"
+            content="{{ page.keywords | default: site.keywords }}"
+        />
+        <meta
+            name="author"
+            content="{{ page.author | default: site.author.name }}"
+        />
+        <link rel="canonical" href="{{ page.url | absolute_url }}" />
+
+        <!-- Open Graph -->
+        <meta
+            property="og:type"
+            content="{{ page.type | default: 'website' }}"
+        />
+        <meta
+            property="og:locale"
+            content="{{ page.lang | default: 'fr_FR' }}"
+        />
+
+        <!-- Schema.org for Google -->
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "{{ page.schema_type | default: 'Organization' }}",
+              "name": "{{ site.title }}",
+              "description": "{{ site.description }}",
+              "url": "{{ site.url }}",
+              "logo": "{{ site.url }}{{ site.logo }}",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "{{ site.author.phone }}",
+                "contactType": "Customer Service",
+                "email": "{{ site.author.email }}",
+                "areaServed": "BE",
+                "availableLanguage": ["French", "Dutch", "English"]
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Rue de Huy 129",
+                "addressLocality": "Hannut",
+                "postalCode": "4280",
+                "addressCountry": "BE"
+              },
+              "sameAs": {{ site.social.links | jsonify }}
+            }
+        </script>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Styles -->
+        <link
+            rel="stylesheet"
+            href="{{ '/assets/css/theme-dark-premium.css' | relative_url }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ '/assets/css/responsive.css' | relative_url }}"
+        />
+        {% if page.layout == 'post' or page.layout == 'blog' %}
+        <link
+            rel="stylesheet"
+            href="{{ '/assets/css/blog.css' | relative_url }}"
+        />
+        {% endif %}
+
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="{{ '/assets/images/favicon.svg' | relative_url }}"
+        />
+
+        <!-- RSS Feed -->
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="{{ site.title }}"
+            href="{{ '/feed.xml' | absolute_url }}"
+        />
+
+        {% include seo-schema.html %}
+    </head>
+    <body>
+        {% include navigation.html %} {{ content }} {% include footer.html %}
+
+        <!-- Scripts -->
+        <script src="{{ '/assets/js/i18n.js' | relative_url }}"></script>
+        <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+        {% if page.custom_js %} {% for js_file in page.custom_js %}
+        <script src="{{ js_file | relative_url }}"></script>
+        {% endfor %} {% endif %}
+    </body>
+</html>

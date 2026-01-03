@@ -1,0 +1,171 @@
+---
+layout: default
+---
+
+<article class="blog-post" itemscope itemtype="http://schema.org/BlogPosting">
+    <!-- Blog Header -->
+    <header class="post-header">
+        <div class="container">
+            <div class="post-meta">
+                <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                    {{ page.date | date: "%d %B %Y" }}
+                </time>
+                {% if page.author %}
+                <span class="post-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <span itemprop="name">{{ page.author }}</span>
+                </span>
+                {% endif %}
+                {% if page.reading_time %}
+                <span class="reading-time">{{ page.reading_time }} min de lecture</span>
+                {% endif %}
+            </div>
+
+            <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+
+            {% if page.excerpt %}
+            <p class="post-excerpt" itemprop="description">{{ page.excerpt }}</p>
+            {% endif %}
+
+            {% if page.categories %}
+            <div class="post-categories">
+                {% for category in page.categories %}
+                <a href="{{ site.baseurl }}/blog/categories/{{ category | slugify }}" class="category-tag">{{ category }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.tags %}
+            <div class="post-tags">
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        {% if page.image %}
+        <div class="post-featured-image">
+            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" itemprop="image">
+        </div>
+        {% endif %}
+    </header>
+
+    <!-- Blog Content -->
+    <section class="post-content" itemprop="articleBody">
+        <div class="container container-narrow">
+            {{ content }}
+        </div>
+    </section>
+
+    <!-- Author Bio -->
+    {% if page.show_author_bio %}
+    <section class="author-bio">
+        <div class="container container-narrow">
+            <div class="bio-card">
+                <div class="bio-content">
+                    <h3>À propos de {{ page.author | default: site.author.name }}</h3>
+                    <p>{{ page.author_bio | default: site.description }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Share Buttons -->
+    <section class="post-share">
+        <div class="container container-narrow">
+            <h3>Partager cet article</h3>
+            <div class="share-buttons">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}"
+                   class="share-btn linkedin"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Partager sur LinkedIn">
+                    <img src="{{ '/assets/icons/linkedin.svg' | relative_url }}" alt="LinkedIn">
+                    LinkedIn
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | uri_escape }}"
+                   class="share-btn twitter"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Partager sur Twitter">
+                    <img src="{{ '/assets/icons/twitter.svg' | relative_url }}" alt="Twitter">
+                    Twitter
+                </a>
+                <a href="mailto:?subject={{ page.title | uri_escape }}&body={{ page.url | absolute_url }}"
+                   class="share-btn email"
+                   aria-label="Partager par email">
+                    <img src="{{ '/assets/icons/email.svg' | relative_url }}" alt="Email">
+                    Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Posts -->
+    {% if site.related_posts.size > 0 %}
+    <section class="related-posts">
+        <div class="container">
+            <h3>Articles similaires</h3>
+            <div class="posts-grid">
+                {% for post in site.related_posts limit:3 %}
+                <article class="post-card">
+                    {% if post.image %}
+                    <a href="{{ post.url | relative_url }}" class="post-card-image">
+                        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                    </a>
+                    {% endif %}
+                    <div class="post-card-content">
+                        <time class="post-card-date">{{ post.date | date: "%d %B %Y" }}</time>
+                        <h4 class="post-card-title">
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        </h4>
+                        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Call to Action -->
+    <section class="post-cta">
+        <div class="container container-narrow">
+            <div class="cta-card">
+                <h3>Besoin d'accompagnement dans votre digitalisation ?</h3>
+                <p>Discutons ensemble de vos projets de transformation numérique</p>
+                <a href="{{ '/#contact' | relative_url }}" class="btn btn-primary">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.excerpt | default: page.description | strip_html | strip_newlines | escape }}",
+      "image": "{{ page.image | absolute_url }}",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      "author": {
+        "@type": "Organization",
+        "name": "{{ page.author | default: site.author.name }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site.url }}{{ site.logo }}"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+      }
+    }
+    </script>
+</article>
