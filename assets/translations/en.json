@@ -117,7 +117,9 @@
     "formLabelEmail": "Email",
     "formLabelCompany": "Company",
     "formLabelSubject": "Subject",
-    "formLabelMessage": "Message"
+    "formLabelMessage": "Message",
+    "formMailtoFallback": "Unable to open your email client. Please contact us directly at:",
+    "formMailtoDetails": "Your message details:"
   },
   "footer": {
     "tagline": "IT at the service of your business",

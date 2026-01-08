@@ -117,7 +117,9 @@
     "formLabelEmail": "E-mail",
     "formLabelCompany": "Bedrijf",
     "formLabelSubject": "Onderwerp",
-    "formLabelMessage": "Bericht"
+    "formLabelMessage": "Bericht",
+    "formMailtoFallback": "Kan uw e-mailclient niet openen. Neem rechtstreeks contact met ons op via:",
+    "formMailtoDetails": "Details van uw bericht:"
   },
   "footer": {
     "tagline": "IT ten dienste van uw bedrijf",

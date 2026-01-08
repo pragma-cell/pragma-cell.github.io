@@ -168,17 +168,36 @@ function initContactForm() {
 
                 const mailtoLink = `mailto:${email}?subject=${subject}&body=${encodeURIComponent(body)}`;
 
-                // Open mail client
-                window.location.href = mailtoLink;
+                // Try to open mail client
+                const mailtoWindow = window.open(mailtoLink, '_blank');
 
-                // Show success message and reset form
-                const successMessage = t('contact.formSuccessMessage', 'Votre client mail va s\'ouvrir. Veuillez envoyer le message depuis votre application de messagerie.');
-                showFormMessage(successMessage, 'success');
-
-                // Reset form after a short delay
+                // Fallback: If mailto fails or is blocked, show contact info
                 setTimeout(() => {
-                    form.reset();
-                }, 1000);
+                    // Check if mailto window opened successfully
+                    if (!mailtoWindow || mailtoWindow.closed || typeof mailtoWindow.closed === 'undefined') {
+                        // Mailto failed - show fallback message with contact details
+                        const fallbackMessage = t('contact.formMailtoFallback',
+                            'Impossible d\'ouvrir votre client mail. Veuillez nous contacter directement à :') +
+                            `\n\n📧 ${email}\n\n` +
+                            t('contact.formMailtoDetails', 'Détails de votre message :') +
+                            `\n\n${t('contact.formLabelName', 'Nom')}: ${formObject.name}` +
+                            `\n${t('contact.formLabelEmail', 'Email')}: ${formObject.email}` +
+                            (formObject.company ? `\n${t('contact.formLabelCompany', 'Entreprise')}: ${formObject.company}` : '') +
+                            `\n${t('contact.formLabelSubject', 'Sujet')}: ${formObject.subject}` +
+                            `\n${t('contact.formLabelMessage', 'Message')}: ${formObject.message}`;
+
+                        showFormMessage(fallbackMessage, 'info');
+                    } else {
+                        // Mailto opened successfully
+                        const successMessage = t('contact.formSuccessMessage', 'Votre client mail va s\'ouvrir. Veuillez envoyer le message depuis votre application de messagerie.');
+                        showFormMessage(successMessage, 'success');
+
+                        // Reset form after a short delay
+                        setTimeout(() => {
+                            form.reset();
+                        }, 1000);
+                    }
+                }, 500);
             }
         });
     }
