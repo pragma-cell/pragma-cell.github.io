@@ -9,7 +9,8 @@
     "philosophy": "Philosophie",
     "services": "Services",
     "team": "Équipe",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "hero": {
     "title": "L'informatique au service de",
@@ -105,11 +106,18 @@
     "formMessage": "Message *",
     "formMessagePlaceholder": "Décrivez votre projet ou vos besoins...",
     "formSubmit": "Envoyer le message",
-    "formSuccessMessage": "Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons bientôt.",
+    "formSuccessMessage": "Votre client mail va s'ouvrir. Veuillez envoyer le message depuis votre application de messagerie.",
     "formErrorName": "Le nom doit contenir au moins 2 caractères.",
     "formErrorEmail": "Veuillez entrer une adresse email valide.",
     "formErrorSubject": "Veuillez sélectionner un sujet.",
-    "formErrorMessage": "Le message doit contenir au moins 10 caractères."
+    "formErrorMessage": "Le message doit contenir au moins 10 caractères.",
+    "emailGreeting": "Bonjour,",
+    "emailIntro": "Nouveau message de contact depuis le site web:",
+    "formLabelName": "Nom",
+    "formLabelEmail": "Email",
+    "formLabelCompany": "Entreprise",
+    "formLabelSubject": "Sujet",
+    "formLabelMessage": "Message"
   },
   "footer": {
     "tagline": "L'informatique au service de votre business",
@@ -120,6 +128,7 @@
     "companyTitle": "Entreprise",
     "company1": "Notre philosophie",
     "company2": "Notre équipe",
+    "blog": "Blog",
     "company3": "Contact",
     "copyright": "© 2024 Pragma IT. Tous droits réservés.",
     "legal": "Mentions légales",

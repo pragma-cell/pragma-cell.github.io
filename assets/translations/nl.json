@@ -9,7 +9,8 @@
     "philosophy": "Filosofie",
     "services": "Diensten",
     "team": "Team",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "hero": {
     "title": "IT ten dienste van",
@@ -105,11 +106,18 @@
     "formMessage": "Bericht *",
     "formMessagePlaceholder": "Beschrijf uw project of behoeften...",
     "formSubmit": "Verzend bericht",
-    "formSuccessMessage": "Bedankt! Uw bericht is succesvol verzonden. We nemen binnenkort contact met u op.",
+    "formSuccessMessage": "Uw e-mailclient gaat open. Stuur het bericht vanuit uw e-mailapplicatie.",
     "formErrorName": "De naam moet minimaal 2 tekens bevatten.",
     "formErrorEmail": "Voer een geldig e-mailadres in.",
     "formErrorSubject": "Selecteer een onderwerp.",
-    "formErrorMessage": "Het bericht moet minimaal 10 tekens bevatten."
+    "formErrorMessage": "Het bericht moet minimaal 10 tekens bevatten.",
+    "emailGreeting": "Hallo,",
+    "emailIntro": "Nieuw contactbericht van de website:",
+    "formLabelName": "Naam",
+    "formLabelEmail": "E-mail",
+    "formLabelCompany": "Bedrijf",
+    "formLabelSubject": "Onderwerp",
+    "formLabelMessage": "Bericht"
   },
   "footer": {
     "tagline": "IT ten dienste van uw bedrijf",
@@ -120,6 +128,7 @@
     "companyTitle": "Bedrijf",
     "company1": "Onze filosofie",
     "company2": "Ons team",
+    "blog": "Blog",
     "company3": "Contact",
     "copyright": "© 2024 Pragma IT. Alle rechten voorbehouden.",
     "legal": "Wettelijke vermeldingen",

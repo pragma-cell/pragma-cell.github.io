@@ -9,7 +9,8 @@
     "philosophy": "Philosophy",
     "services": "Services",
     "team": "Team",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "hero": {
     "title": "IT at the service of",
@@ -105,11 +106,18 @@
     "formMessage": "Message *",
     "formMessagePlaceholder": "Describe your project or needs...",
     "formSubmit": "Send message",
-    "formSuccessMessage": "Thank you! Your message has been sent successfully. We will contact you soon.",
+    "formSuccessMessage": "Your mail client will open. Please send the message from your email application.",
     "formErrorName": "Name must contain at least 2 characters.",
     "formErrorEmail": "Please enter a valid email address.",
     "formErrorSubject": "Please select a subject.",
-    "formErrorMessage": "Message must contain at least 10 characters."
+    "formErrorMessage": "Message must contain at least 10 characters.",
+    "emailGreeting": "Hello,",
+    "emailIntro": "New contact message from the website:",
+    "formLabelName": "Name",
+    "formLabelEmail": "Email",
+    "formLabelCompany": "Company",
+    "formLabelSubject": "Subject",
+    "formLabelMessage": "Message"
   },
   "footer": {
     "tagline": "IT at the service of your business",
@@ -120,6 +128,7 @@
     "companyTitle": "Company",
     "company1": "Our philosophy",
     "company2": "Our team",
+    "blog": "Blog",
     "company3": "Contact",
     "copyright": "© 2024 Pragma IT. All rights reserved.",
     "legal": "Legal notice",

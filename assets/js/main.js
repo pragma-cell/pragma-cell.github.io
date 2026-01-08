@@ -132,24 +132,53 @@ function initScrollReveal() {
 // Contact form functionality
 function initContactForm() {
     const form = document.getElementById('contactForm');
-    
+
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(form);
             const formObject = {};
             formData.forEach((value, key) => {
                 formObject[key] = value;
             });
-            
+
             // Validate form
             if (validateForm(formObject)) {
-                // Simulate form submission
-                const successMessage = window.i18n ? window.i18n.t('contact.formSuccessMessage') : 'Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons bientôt.';
+                // Get translation function
+                const t = (key, fallback) => window.i18n ? window.i18n.translate(key) : fallback;
+
+                // Build mailto link
+                const email = 'contact@pragm-it.be';
+                const subject = encodeURIComponent(`[Contact Web] ${formObject.subject}`);
+
+                // Build email body
+                let body = t('contact.emailGreeting', 'Bonjour,') + '\n\n';
+                body += t('contact.emailIntro', 'Nouveau message de contact depuis le site web:') + '\n\n';
+                body += '---\n';
+                body += t('contact.formLabelName', 'Nom') + ': ' + formObject.name + '\n';
+                body += t('contact.formLabelEmail', 'Email') + ': ' + formObject.email + '\n';
+                if (formObject.company) {
+                    body += t('contact.formLabelCompany', 'Entreprise') + ': ' + formObject.company + '\n';
+                }
+                body += t('contact.formLabelSubject', 'Sujet') + ': ' + formObject.subject + '\n';
+                body += '---\n\n';
+                body += t('contact.formLabelMessage', 'Message') + ':\n' + formObject.message + '\n';
+
+                const mailtoLink = `mailto:${email}?subject=${subject}&body=${encodeURIComponent(body)}`;
+
+                // Open mail client
+                window.location.href = mailtoLink;
+
+                // Show success message and reset form
+                const successMessage = t('contact.formSuccessMessage', 'Votre client mail va s\'ouvrir. Veuillez envoyer le message depuis votre application de messagerie.');
                 showFormMessage(successMessage, 'success');
-                form.reset();
+
+                // Reset form after a short delay
+                setTimeout(() => {
+                    form.reset();
+                }, 1000);
             }
         });
     }
@@ -160,7 +189,7 @@ function validateForm(data) {
     const errors = [];
 
     // Get translation function
-    const t = (key, fallback) => window.i18n ? window.i18n.t(key) : fallback;
+    const t = (key, fallback) => window.i18n ? window.i18n.translate(key) : fallback;
 
     // Required fields
     if (!data.name || data.name.trim().length < 2) {
