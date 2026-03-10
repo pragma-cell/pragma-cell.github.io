@@ -147,7 +147,7 @@ function initContactForm() {
             // Validate form
             if (validateForm(formObject)) {
                 // Simulate form submission
-                const successMessage = window.i18n ? window.i18n.t('contact.formSuccessMessage') : 'Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons bientôt.';
+                const successMessage = window.i18n ? window.i18n.translate('contact.formSuccessMessage') : 'Merci ! Votre message a été envoyé avec succès. Nous vous recontacterons bientôt.';
                 showFormMessage(successMessage, 'success');
                 form.reset();
             }
@@ -160,7 +160,7 @@ function validateForm(data) {
     const errors = [];
 
     // Get translation function
-    const t = (key, fallback) => window.i18n ? window.i18n.t(key) : fallback;
+    const t = (key, fallback) => window.i18n ? window.i18n.translate(key) : fallback;
 
     // Required fields
     if (!data.name || data.name.trim().length < 2) {
@@ -326,7 +326,9 @@ function initScrollAnimations() {
 
 // Animate number counting
 function animateNumber(element) {
-    const target = parseInt(element.textContent);
+    const text = element.textContent;
+    const target = parseInt(text);
+    const suffix = text.includes('+') ? '+' : text.includes('%') ? '%' : '';
     const duration = 2000;
     const step = target / (duration / 16);
     let current = 0;
@@ -337,17 +339,7 @@ function animateNumber(element) {
             current = target;
             clearInterval(timer);
         }
-        
-        // Format number based on target
-        let displayValue = Math.floor(current);
-        if (element.textContent.includes('+')) {
-            displayValue = displayValue + '+';
-        }
-        if (element.textContent.includes('%')) {
-            displayValue = displayValue + '%';
-        }
-        
-        element.textContent = displayValue;
+        element.textContent = Math.floor(current) + suffix;
     }, 16);
 }
 
