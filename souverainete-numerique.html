@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Souveraineté numérique pour les PME — Pragma IT. Hébergez vos données en Europe avec Infomaniak, acteur suisse indépendant et engagé.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Souveraineté numérique — Pragma IT</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/theme-dark-premium.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+    <style>
+        /* Page-specific styles */
+        .page-hero {
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                        var(--background);
+            padding: calc(80px + var(--spacing-20)) 0 var(--spacing-20);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: radial-gradient(circle, var(--primary-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-6);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .page-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(6,182,212,0.15));
+            border: 1px solid var(--border-glow);
+            color: var(--accent-color);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: var(--spacing-1) var(--spacing-4);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .page-hero h1 {
+            font-size: var(--font-size-5xl);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-6);
+        }
+
+        .page-hero p {
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* Content sections */
+        .content-section {
+            padding: var(--spacing-20) 0;
+        }
+
+        .content-section.alt {
+            background: linear-gradient(180deg, var(--background-alt) 0%, var(--background) 100%);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-16);
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-6);
+        }
+
+        .content-grid.reverse {
+            direction: rtl;
+        }
+
+        .content-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .content-text h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-6);
+            line-height: 1.2;
+        }
+
+        .content-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-4);
+        }
+
+        .content-text ul {
+            list-style: none;
+            margin: var(--spacing-6) 0;
+        }
+
+        .content-text ul li {
+            padding: var(--spacing-2) 0;
+            padding-left: var(--spacing-6);
+            color: var(--text-secondary);
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .content-text ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: 700;
+            text-shadow: 0 0 8px var(--success-color);
+        }
+
+        /* Risk cards */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-6);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-6);
+        }
+
+        .risk-card {
+            background: var(--background-alt);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-8);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .risk-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--warning-color), var(--error-color));
+        }
+
+        .risk-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--warning-color);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+        }
+
+        .risk-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-4);
+            display: block;
+        }
+
+        .risk-card h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-3);
+            color: var(--text-primary);
+        }
+
+        .risk-card p {
+            font-size: var(--font-size-sm);
+            color: var(--text-tertiary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Infomaniak spotlight */
+        .infomaniak-section {
+            padding: var(--spacing-20) 0;
+            background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+        }
+
+        .infomaniak-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-6);
+        }
+
+        .infomaniak-inner {
+            background: var(--background-alt);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-12);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .infomaniak-inner::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--radius-2xl);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .infomaniak-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .infomaniak-logo-wrapper {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: var(--spacing-3);
+        }
+
+        .infomaniak-logo-wrapper img {
+            width: 100%;
+            height: auto;
+        }
+
+        .infomaniak-header-text h2 {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .infomaniak-header-text p {
+            color: var(--text-tertiary);
+            margin: 0;
+            font-size: var(--font-size-sm);
+        }
+
+        .infomaniak-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .infomaniak-feature {
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-4);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-3);
+        }
+
+        .infomaniak-feature-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .infomaniak-feature h4 {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-bottom: var(--spacing-1);
+            color: var(--text-primary);
+        }
+
+        .infomaniak-feature p {
+            font-size: var(--font-size-xs);
+            color: var(--text-tertiary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .infomaniak-cta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-6);
+            padding-top: var(--spacing-6);
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .infomaniak-cta p {
+            color: var(--text-tertiary);
+            font-size: var(--font-size-sm);
+            margin: 0;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .affiliate-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.15));
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            padding: var(--spacing-1) var(--spacing-3);
+            border-radius: var(--radius-full);
+        }
+
+        /* How we help */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--spacing-6);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-6);
+            counter-reset: steps;
+        }
+
+        .step-card {
+            background: var(--background-alt);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-8);
+            position: relative;
+            transition: all var(--transition-base);
+            counter-increment: steps;
+        }
+
+        .step-card::before {
+            content: counter(steps, decimal-leading-zero);
+            position: absolute;
+            top: var(--spacing-6);
+            right: var(--spacing-6);
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.4;
+            line-height: 1;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .step-card h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-3);
+        }
+
+        .step-card p {
+            font-size: var(--font-size-sm);
+            color: var(--text-tertiary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* CTA section */
+        .cta-section {
+            padding: var(--spacing-20) 0;
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-6);
+        }
+
+        .cta-inner h2 {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .cta-inner p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-8);
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: var(--font-size-3xl); }
+            .content-grid { grid-template-columns: 1fr; gap: var(--spacing-8); }
+            .content-grid.reverse { direction: ltr; }
+            .infomaniak-header { flex-direction: column; text-align: center; }
+            .infomaniak-cta { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:inherit;">
+                    <img src="assets/images/logo.svg" alt="Pragma IT" class="logo">
+                    <span class="logo-text">Pragma IT</span>
+                </a>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:center;">
+                <a href="index.html#contact" class="btn btn-primary" style="font-size:0.875rem;padding:0.5rem 1.25rem;">Nous contacter</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-tag">Souveraineté numérique</span>
+            <h1>Vos données vous <span class="highlight">appartiennent</span></h1>
+            <p>À l'heure où les géants du cloud américain concentrent des pans entiers de l'économie numérique européenne, la question n'est plus de savoir si vous devez agir — mais quand. Pragma IT vous accompagne vers une infrastructure numérique souveraine, pragmatique et durable.</p>
+        </div>
+    </section>
+
+    <!-- Pourquoi c'est urgent -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi la souveraineté numérique <span class="highlight">vous concerne</span></h2>
+                <p class="section-subtitle">Ce n'est pas une question réservée aux grandes entreprises ou aux institutions publiques. Chaque PME qui héberge ses données hors d'Europe s'expose à des risques concrets.</p>
+            </div>
+        </div>
+        <div class="risk-grid">
+            <div class="risk-card">
+                <span class="risk-icon">⚖️</span>
+                <h3>Cloud Act américain</h3>
+                <p>La loi américaine CLOUD Act autorise les autorités américaines à accéder aux données hébergées par des entreprises américaines, où qu'elles soient dans le monde — y compris en Europe.</p>
+            </div>
+            <div class="risk-card">
+                <span class="risk-icon">🔒</span>
+                <h3>RGPD & conformité</h3>
+                <p>Héberger des données clients hors de l'UE sans encadrement contractuel adéquat vous expose à des sanctions RGPD. La conformité commence par le choix de votre hébergeur.</p>
+            </div>
+            <div class="risk-card">
+                <span class="risk-icon">📈</span>
+                <h3>Dépendance tarifaire</h3>
+                <p>Les acteurs dominants augmentent leurs tarifs régulièrement. Sans alternative crédible, vous n'avez aucun levier de négociation. La dépendance coûte cher sur le long terme.</p>
+            </div>
+            <div class="risk-card">
+                <span class="risk-icon">🏢</span>
+                <h3>Continuité d'activité</h3>
+                <p>Une panne, une décision unilatérale de suspension de compte ou une acquisition peuvent interrompre votre activité du jour au lendemain si votre infrastructure repose sur un seul acteur étranger.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ce que ça signifie concrètement -->
+    <section class="content-section alt">
+        <div class="content-grid">
+            <div class="content-text">
+                <h2>Ce que signifie <span class="highlight">héberger en Europe</span></h2>
+                <p>La souveraineté numérique ne signifie pas renoncer à la performance ou à la modernité. Elle signifie choisir des acteurs dont les serveurs, la propriété et la gouvernance sont ancrés en Europe — et qui ne peuvent pas être contraints par une législation étrangère.</p>
+                <ul>
+                    <li>Données stockées et traitées exclusivement dans des datacenters européens</li>
+                    <li>Entreprise non soumise au droit américain ou au CLOUD Act</li>
+                    <li>Transparence sur la localisation et le traitement des données</li>
+                    <li>Contrats conformes au RGPD sans clauses dérogatoires</li>
+                    <li>Support en français, en néerlandais, dans votre fuseau horaire</li>
+                </ul>
+            </div>
+            <div>
+                <div style="background: var(--background-alt); border: 1px solid var(--border-color); border-radius: var(--radius-2xl); padding: var(--spacing-8); box-shadow: var(--shadow-glow);">
+                    <div style="font-size:3rem; margin-bottom: var(--spacing-4);">🇪🇺</div>
+                    <h3 style="margin-bottom: var(--spacing-4);">Le cadre européen comme avantage</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--spacing-4);">L'Europe dispose du cadre réglementaire de protection des données le plus exigeant au monde. C'est une contrainte pour ceux qui l'ignorent — un avantage concurrentiel pour ceux qui s'y conforment.</p>
+                    <p style="color: var(--text-tertiary); font-size: var(--font-size-sm); margin: 0;">En choisissant des prestataires européens souverains, vous transformez une obligation réglementaire en argument de confiance vis-à-vis de vos clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infomaniak -->
+    <section class="infomaniak-section">
+        <div class="infomaniak-card">
+            <div style="text-align:center; margin-bottom: var(--spacing-10);">
+                <span class="page-tag">Notre recommandation</span>
+                <h2 class="section-title" style="margin-top: var(--spacing-4);">Infomaniak, notre partenaire <span class="highlight">souverain</span></h2>
+                <p class="section-subtitle">Après avoir évalué les alternatives européennes disponibles, Pragma IT a choisi de recommander Infomaniak à ses clients. Voici pourquoi.</p>
+            </div>
+
+            <div class="infomaniak-inner">
+                <div class="infomaniak-header">
+                    <div class="infomaniak-logo-wrapper">
+                        <!-- Logo placeholder — remplacer par le logo Infomaniak officiel -->
+                        <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="40" rx="4" fill="#0098FF"/>
+                            <text x="50" y="27" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">infomaniak</text>
+                        </svg>
+                    </div>
+                    <div class="infomaniak-header-text">
+                        <h2>Infomaniak</h2>
+                        <p>Hébergeur suisse indépendant · Fondé en 1994 · 100% propriété des employés · Datacenters en Suisse et en France</p>
+                    </div>
+                </div>
+
+                <div class="infomaniak-features">
+                    <div class="infomaniak-feature">
+                        <span class="infomaniak-feature-icon">🇨🇭</span>
+                        <div>
+                            <h4>Souveraineté totale</h4>
+                            <p>Entreprise suisse, non cotée, non rachetable par un acteur étranger. Hors CLOUD Act.</p>
+                        </div>
+                    </div>
+                    <div class="infomaniak-feature">
+                        <span class="infomaniak-feature-icon">🌱</span>
+                        <div>
+                            <h4>Écoresponsable</h4>
+                            <p>100% énergies renouvelables, neutralité carbone, datacenters à refroidissement naturel.</p>
+                        </div>
+                    </div>
+                    <div class="infomaniak-feature">
+                        <span class="infomaniak-feature-icon">💼</span>
+                        <div>
+                            <h4>Suite complète</h4>
+                            <p>Hébergement web, mail, cloud (kDrive), vidéo, collaboration — tout en un seul acteur souverain.</p>
+                        </div>
+                    </div>
+                    <div class="infomaniak-feature">
+                        <span class="infomaniak-feature-icon">💶</span>
+                        <div>
+                            <h4>Tarifs compétitifs</h4>
+                            <p>Prix stables et transparents. Pas de facturation à la surprise. Facturation en euros.</p>
+                        </div>
+                    </div>
+                    <div class="infomaniak-feature">
+                        <span class="infomaniak-feature-icon">🛡️</span>
+                        <div>
+                            <h4>RGPD natif</h4>
+                            <p>DPA (Data Processing Agreement) inclus. Conformité RGPD by design, pas en option.</p>
+                        </div>
+                    </div>
+                    <div class="infomaniak-feature">
+                        <span class="infomaniak-feature-icon">🤝</span>
+                        <div>
+                            <h4>Support humain</h4>
+                            <p>Support en français 24h/24, interlocuteurs réels, temps de réponse garanti.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infomaniak-cta">
+                    <p>Pragma IT est partenaire affilié Infomaniak. Si vous souscrivez via notre lien, nous percevons une commission — ce qui ne modifie pas votre tarif. Nous ne recommandons que des solutions que nous utilisons et que nous croyons réellement adaptées à nos clients.</p>
+                    <div style="display:flex; flex-direction:column; gap:var(--spacing-3); align-items:flex-end; flex-shrink:0;">
+                        <span class="affiliate-badge">✓ Lien affilié transparent</span>
+                        <a href="https://www.infomaniak.com/goto/fr/cloud?utm_source=pragma-cell" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            Découvrir Infomaniak →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comment on vous accompagne -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comment Pragma IT vous <span class="highlight">accompagne</span></h2>
+                <p class="section-subtitle">Migrer vers une infrastructure souveraine ne se fait pas du jour au lendemain. Nous construisons avec vous un plan progressif, sans rupture d'activité.</p>
+            </div>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <h3>Audit de l'existant</h3>
+                <p>Cartographie de vos services cloud actuels, identification des données sensibles, évaluation des risques liés à votre hébergement actuel.</p>
+            </div>
+            <div class="step-card">
+                <h3>Plan de migration</h3>
+                <p>Définition d'une roadmap priorisée selon les risques et la complexité technique. Nous commençons par les gains les plus rapides.</p>
+            </div>
+            <div class="step-card">
+                <h3>Migration accompagnée</h3>
+                <p>Transfert des services vers Infomaniak ou d'autres acteurs souverains. Zéro interruption de service, tests préalables systématiques.</p>
+            </div>
+            <div class="step-card">
+                <h3>Formation de vos équipes</h3>
+                <p>Prise en main des nouveaux outils, formation des administrateurs, documentation adaptée à votre contexte.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2>Prêt à reprendre le <span class="highlight">contrôle</span> ?</h2>
+            <p>Un diagnostic de souveraineté numérique prend 2 heures. Il vous donnera une vision claire de votre situation et des actions concrètes à mener — sans jargon, sans sur-ingénierie.</p>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="btn btn-primary">Demander un diagnostic</a>
+                <a href="index.html" class="btn btn-secondary">Retour au site</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>© 2024 Pragma IT · <a href="index.html" style="color:var(--text-tertiary);">Retour au site</a></p>
+                <div class="footer-legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
