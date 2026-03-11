@@ -2,6 +2,32 @@
 
 CDN Tabler : `https://cdn.jsdelivr.net/npm/@tabler/icons/icons/outline/[nom].svg`
 
+## Changer de thème
+
+Les assets sont organisés par thème dans `assets/themes/`. Pour switcher :
+
+```bash
+cd assets/themes
+./switch.sh original   # restaure les assets d'origine
+./switch.sh tabler     # active les icônes Tabler
+```
+
+Le script copie les fichiers du thème choisi dans `assets/icons/` et `assets/images/`, et met à jour `index.html` si nécessaire.
+
+```
+assets/
+  icons/                  ← actif (thème en cours)
+  images/                 ← actif (thème en cours)
+  themes/
+    switch.sh             ← script de changement de thème
+    original/
+      icons/              ← icônes SVG d'origine
+      images/             ← images d'origine
+    tabler/
+      icons/              ← icônes Tabler (outline)
+      images/             ← illustration hero Tabler + images non remplacées
+```
+
 ---
 
 ## Icônes de philosophie

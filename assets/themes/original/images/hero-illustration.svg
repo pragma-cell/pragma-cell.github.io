@@ -1,0 +1,86 @@
+<svg width="500" height="400" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- Computer Monitor -->
+  <rect x="100" y="120" width="280" height="180" rx="8" fill="#1e293b"/>
+  <rect x="110" y="130" width="260" height="160" rx="4" fill="#0f172a"/>
+  
+  <!-- Screen Content -->
+  <rect x="120" y="140" width="80" height="6" rx="3" fill="#2563eb"/>
+  <rect x="120" y="155" width="200" height="4" rx="2" fill="#64748b"/>
+  <rect x="120" y="165" width="180" height="4" rx="2" fill="#64748b"/>
+  <rect x="120" y="175" width="150" height="4" rx="2" fill="#64748b"/>
+  
+  <!-- Code blocks -->
+  <rect x="120" y="190" width="40" height="4" rx="2" fill="#10b981"/>
+  <rect x="170" y="190" width="60" height="4" rx="2" fill="#f59e0b"/>
+  <rect x="120" y="200" width="80" height="4" rx="2" fill="#64748b"/>
+  <rect x="120" y="210" width="100" height="4" rx="2" fill="#64748b"/>
+  
+  <!-- Charts -->
+  <rect x="250" y="180" width="60" height="40" rx="4" fill="#1e293b" stroke="#2563eb" stroke-width="2"/>
+  <path d="M260 210 L270 200 L280 205 L290 195 L300 200" stroke="#2563eb" stroke-width="2" fill="none"/>
+  
+  <!-- Monitor Stand -->
+  <rect x="220" y="300" width="40" height="20" rx="4" fill="#64748b"/>
+  <rect x="180" y="320" width="120" height="8" rx="4" fill="#64748b"/>
+  
+  <!-- Floating Elements -->
+  <!-- Gear Icon -->
+  <g transform="translate(50, 80)">
+    <circle cx="20" cy="20" r="18" fill="url(#gearGradient)"/>
+    <path d="M20 8C13.3726 8 8 13.3726 8 20C8 26.6274 13.3726 32 20 32C26.6274 32 32 26.6274 32 20C32 13.3726 26.6274 8 20 8ZM20 26C16.6863 26 14 23.3137 14 20C14 16.6863 16.6863 14 20 14C23.3137 14 26 16.6863 26 20C26 23.3137 23.3137 26 20 26Z" fill="white"/>
+    <circle cx="20" cy="20" r="4" fill="white"/>
+  </g>
+  
+  <!-- Data Analytics -->
+  <g transform="translate(400, 60)">
+    <rect width="60" height="60" rx="12" fill="url(#analyticsGradient)"/>
+    <rect x="10" y="35" width="8" height="15" rx="2" fill="white"/>
+    <rect x="20" y="25" width="8" height="25" rx="2" fill="white"/>
+    <rect x="30" y="30" width="8" height="20" rx="2" fill="white"/>
+    <rect x="40" y="20" width="8" height="30" rx="2" fill="white"/>
+    <circle cx="30" cy="15" r="2" fill="white"/>
+    <path d="M26 15 L30 15 L34 15" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Cloud -->
+  <g transform="translate(350, 300)">
+    <path d="M40 20C40 15.5817 36.4183 12 32 12C30.3271 12 28.7893 12.6326 27.6055 13.6885C26.2406 11.0067 23.4632 9.33333 20.3333 9.33333C15.5491 9.33333 11.6667 13.2157 11.6667 18C11.6667 18.3423 11.6862 18.6799 11.7243 19.0118C9.10776 19.5764 7.16667 21.9431 7.16667 24.6667C7.16667 27.8883 9.74833 30.5 13 30.5H36.3333C38.7265 30.5 40.6667 28.5598 40.6667 26.1667C40.6667 23.9853 39.0667 22.1667 37 21.8333" fill="url(#cloudGradient)"/>
+  </g>
+  
+  <!-- Connection Lines -->
+  <path d="M70 100 Q150 80 240 150" stroke="#2563eb" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="5,5"/>
+  <path d="M420 90 Q350 120 270 150" stroke="#f59e0b" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="5,5"/>
+  <path d="M380 330 Q300 280 240 200" stroke="#10b981" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="5,5"/>
+  
+  <!-- Particles -->
+  <circle cx="80" cy="200" r="3" fill="#2563eb" opacity="0.5"/>
+  <circle cx="420" cy="180" r="2" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="150" cy="350" r="2.5" fill="#10b981" opacity="0.4"/>
+  <circle cx="450" cy="250" r="2" fill="#2563eb" opacity="0.3"/>
+  <circle cx="60" cy="320" r="1.5" fill="#f59e0b" opacity="0.7"/>
+  
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="500" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8fafc" stop-opacity="0"/>
+      <stop offset="1" stop-color="#e2e8f0" stop-opacity="0.3"/>
+    </linearGradient>
+    
+    <linearGradient id="gearGradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    
+    <linearGradient id="analyticsGradient" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+    
+    <linearGradient id="cloudGradient" x1="0" y1="0" x2="40" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10b981"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+</svg>
