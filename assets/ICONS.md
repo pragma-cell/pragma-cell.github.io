@@ -122,11 +122,13 @@ CDN Tabler : `https://cdn.jsdelivr.net/npm/@tabler/icons/icons/outline/[nom].svg
 
 ### hero-illustration.svg
 
-| Actuel |
-|--------|
-| [![](https://pragma-cell.github.io/assets/images/hero-illustration.svg)](https://pragma-cell.github.io/assets/images/hero-illustration.svg) |
+| Actuel | Alternative — Tabler Illustrations |
+|--------|-------------------------------------|
+| [![](https://pragma-cell.github.io/assets/images/hero-illustration.svg)](https://pragma-cell.github.io/assets/images/hero-illustration.svg) | [![Tabler AI illustration](https://tabler.io/_next/image?url=%2Fillustrations%2Fdark%2Fai.png&w=1632&q=85&dpl=dpl_AWo7H9NvPVqH8gGHeb9DdLqBT8G9)](https://tabler.io/illustrations) |
 
-Tabler ne propose pas d'illustrations scéniques. Alternatives recommandées :
+> L'illustration Tabler provient de la collection [tabler.io/illustrations](https://tabler.io/illustrations) — thème sombre, style tech moderne, cohérent avec le reste des icônes Tabler.
+
+Autres alternatives :
 
 - **[unDraw](https://undraw.co/)** — SVG gratuits, couleur personnalisable, style propre
 - **[Storyset](https://storyset.com/)** — illustrations animables, thèmes tech/business
