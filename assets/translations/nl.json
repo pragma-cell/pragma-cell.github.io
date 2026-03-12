@@ -8,7 +8,7 @@
     "home": "Home",
     "philosophy": "Filosofie",
     "services": "Diensten",
-    "team": "Team",
+    "team": "Experts",
     "contact": "Contact"
   },
   "hero": {
@@ -64,7 +64,7 @@
   },
   "team": {
     "title": "Ons Netwerk van Experts",
-    "subtitle": "Gepassioneerde experts die hun technische expertise ten dienste stellen van uw bedrijf",
+    "subtitle": "Wij steunen op een netwerk van gespecialiseerde experts die wij raadplegen en laten samenwerken om de projecten van onze klanten te realiseren.",
     "profile1Title": "Expert Digitale Strategie",
     "profile1Role": "Full-Stack Ontwikkelaar & Consulting",
     "profile1Description": "Combineert technische expertise en zakelijke visie om leidinggevenden te begeleiden bij hun strategische beslissingen. Geeft altijd de voorkeur aan pragmatische oplossingen die echte waarde genereren.",

@@ -8,7 +8,7 @@
     "home": "Home",
     "philosophy": "Philosophy",
     "services": "Services",
-    "team": "Team",
+    "team": "Experts",
     "contact": "Contact"
   },
   "hero": {
@@ -64,7 +64,7 @@
   },
   "team": {
     "title": "Our Network of Experts",
-    "subtitle": "Passionate experts who put their technical expertise at the service of your business",
+    "subtitle": "We rely on a network of specialized experts that we consult and bring together to deliver our clients' projects.",
     "profile1Title": "Digital Strategy Expert",
     "profile1Role": "Full-Stack Developer & Consulting",
     "profile1Description": "Combines technical expertise and business vision to support leaders in their strategic decisions. Always prioritizes pragmatic solutions that generate real value.",
