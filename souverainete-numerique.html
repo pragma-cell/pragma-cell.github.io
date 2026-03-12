@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Souveraineté numérique pour les PME — Pragma IT. Hébergez vos données en Europe avec Infomaniak, acteur suisse indépendant et engagé.">
-    <meta name="robots" content="noindex, nofollow">
 
     <title>Souveraineté numérique — Pragma IT</title>
 
@@ -434,8 +433,23 @@
                     <span class="logo-text">Pragma IT</span>
                 </a>
             </div>
-            <div style="display:flex;gap:1rem;align-items:center;">
-                <a href="index.html#contact" class="btn btn-primary" style="font-size:0.875rem;padding:0.5rem 1.25rem;">Nous contacter</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#accueil" class="nav-link" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="index.html#philosophie" class="nav-link" data-i18n="nav.philosophy">Philosophie</a></li>
+                <li><a href="index.html#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+                <li><a href="index.html#equipe" class="nav-link" data-i18n="nav.team">Experts</a></li>
+                <li><a href="souverainete-numerique.html" class="nav-link active" data-i18n="nav.sovereignty">Souveraineté</a></li>
+                <li><a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+                <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
+                <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
@@ -626,16 +640,41 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-                <p>© 2024 Pragma IT · <a href="index.html" style="color:var(--text-tertiary);">Retour au site</a></p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/images/logo.svg" alt="Pragma IT" class="footer-logo">
+                    <p data-i18n="footer.tagline">L'informatique au service de votre business</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.servicesTitle">Services</h4>
+                        <ul>
+                            <li><a href="index.html#services" data-i18n="footer.service1">Audit & Stratégie</a></li>
+                            <li><a href="index.html#services" data-i18n="footer.service2">Implémentation</a></li>
+                            <li><a href="index.html#services" data-i18n="footer.service3">Formation</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-i18n="footer.companyTitle">Entreprise</h4>
+                        <ul>
+                            <li><a href="index.html#philosophie" data-i18n="footer.company1">Notre philosophie</a></li>
+                            <li><a href="index.html#equipe" data-i18n="footer.company2">Notre équipe</a></li>
+                            <li><a href="index.html#contact" data-i18n="footer.company3">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2024 Pragma IT. Tous droits réservés.</p>
                 <div class="footer-legal">
-                    <a href="#">Mentions légales</a>
-                    <a href="#">Politique de confidentialité</a>
+                    <a href="#" data-i18n="footer.legal">Mentions légales</a>
+                    <a href="#" data-i18n="footer.privacy">Politique de confidentialité</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="assets/js/i18n.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
